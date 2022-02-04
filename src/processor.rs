@@ -6,12 +6,13 @@ use solana_program::{
     pubkey::Pubkey,
     program_pack::{Pack, IsInitialized},
     sysvar::{rent::Rent, Sysvar},
-    program::invoke
+    program::invoke,
 };
 
 use crate::{instruction::EscrowInstruction, error::EscrowError, state::Escrow};
 
 pub struct Processor;
+
 impl Processor {
     pub fn process(program_id: &Pubkey, accounts: &[AccountInfo], instruction_data: &[u8]) -> ProgramResult {
         let instruction = EscrowInstruction::unpack(instruction_data)?;
